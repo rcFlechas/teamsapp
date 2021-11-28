@@ -4,18 +4,24 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.view.View
+import android.widget.ImageView
 import android.widget.SearchView
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.bumptech.glide.Glide.with
+import com.bumptech.glide.request.RequestOptions
+import com.rcflechas.teamsapp.R
 import com.rcflechas.teamsapp.application.BaseApplication
+import com.rcflechas.teamsapp.presentation.widget.GlideApp
 import com.rcflechas.teamsapp.utilities.Event
 import com.rcflechas.teamsapp.utilities.UIState
 import io.reactivex.Completable
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import com.rcflechas.teamsapp.presentation.widget.GlideConfiguration
 
 inline fun <T> LiveData<Event<T>>.observeEvent(owner: LifecycleOwner, crossinline onEventUnhandledContent: (T) -> Unit) {
     observe(owner, { it.getContentIfNotHandled()?.let(onEventUnhandledContent) })
@@ -50,4 +56,14 @@ fun <T> Completable.subscribe(errorMutableLiveData: MutableLiveData<Event<UIStat
 fun SearchView.clear(submit: Boolean = false) {
     this.setQuery(String(), submit);
     this.clearFocus();
+}
+
+internal fun ImageView.setImageByUrl(url: String, options: RequestOptions = RequestOptions()) {
+
+    GlideApp.with(this.context)
+        .load(url)
+        .placeholder(R.drawable.ic_launcher_background)
+        .error(R.drawable.ic_launcher_background)
+        .apply(options)
+        .into(this)
 }

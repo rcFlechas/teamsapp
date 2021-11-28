@@ -39,7 +39,7 @@ class TeamsViewModel (application: Application, private val teamRepository: Team
                 }
                 .subscribeOn(Schedulers.io())
                 .subscribeBy(
-                    onSuccess = { teamsEntity ->
+                    onNext = { teamsEntity ->
 
                         if (teamsEntity.isNotEmpty()) {
                             _getByLeagueName.postValue(Event(UIState.OnSuccess(teamsEntity.map(TeamEntity::toBind))))

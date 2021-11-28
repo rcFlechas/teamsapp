@@ -3,13 +3,15 @@ package com.rcflechas.teamsapp.models.data.local.entities
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.rcflechas.teamsapp.mappers.BindMapper
 import com.rcflechas.teamsapp.presentation.binds.TeamBind
 import kotlinx.parcelize.Parcelize
 
 @Entity(
-    tableName = "team"
+    tableName = "team",
+    indices = [ Index(value = ["team_code"], unique = true)]
 )
 @Parcelize
 data class TeamEntity(

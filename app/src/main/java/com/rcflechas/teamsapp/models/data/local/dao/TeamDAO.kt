@@ -4,8 +4,8 @@ import androidx.room.Dao
 import androidx.room.Query
 import com.rcflechas.teamsapp.models.data.local.entities.TeamEntity
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Maybe
-import io.reactivex.Single
 
 @Dao
 interface TeamDAO : CrudDAO<TeamEntity> {
@@ -14,7 +14,7 @@ interface TeamDAO : CrudDAO<TeamEntity> {
     fun getAll(): Maybe<List<TeamEntity>>
 
     @Query("SELECT * FROM team WHERE team_league_name =:leagueName ")
-    fun getTeamsByLeagueName(leagueName: String): Single<List<TeamEntity>>
+    fun getTeamsByLeagueName(leagueName: String): Flowable<List<TeamEntity>>
 
     @Query("SELECT * FROM team WHERE team_id = :id")
     fun getById(id: Long): Maybe<TeamEntity>
