@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -69,6 +71,7 @@ class TeamsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupToolbar()
         setupUI()
         setupAdapters()
         setupEvents()
@@ -76,18 +79,19 @@ class TeamsFragment : Fragment() {
         teamsViewModel.getByLeagueName(SPANISH_LA_LIGA)
     }
 
-    override fun onResume() {
-        super.onResume()
+    private fun setupToolbar() {
+        binding?.toolbar?.setTitle(R.string.app_name)
     }
 
     private fun setupUI() {
-
     }
 
     private fun setupAdapters() {
 
         teamAdapter = TeamAdapter (clickClosure = {
 
+            val bundle = bundleOf(TeamBind.TAG to it)
+            findNavController().navigate(R.id.action_teamsFragment_to_teamDetailFragmentDialog, bundle)
         })
         teamAdapter.setHasStableIds(true)
         binding?.teamRecyclerView?.apply {

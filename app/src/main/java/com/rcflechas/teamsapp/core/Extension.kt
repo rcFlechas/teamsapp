@@ -67,3 +67,11 @@ internal fun ImageView.setImageByUrl(url: String, options: RequestOptions = Requ
         .apply(options)
         .into(this)
 }
+
+fun String.setHttps() : String {
+    var url = this
+    if (!this.startsWith("http://") && !this.startsWith("https://")) {
+        url = "https://" + url
+    }
+    return url
+}

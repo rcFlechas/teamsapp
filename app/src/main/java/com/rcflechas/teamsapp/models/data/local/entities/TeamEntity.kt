@@ -38,6 +38,9 @@ data class TeamEntity(
     @ColumnInfo(name = "team_founded_year")
     val foundedYear: String,
 
+    @ColumnInfo(name = "team_banner")
+    val banner: String,
+
     @ColumnInfo(name = "team_badge")
     val badge: String,
 
@@ -46,6 +49,9 @@ data class TeamEntity(
 
     @ColumnInfo(name = "team_stadium")
     val stadium: String,
+
+    @ColumnInfo(name = "team_image_stadium")
+    val imageStadium: String,
 
     @ColumnInfo(name = "team_website")
     val website: String,
@@ -72,9 +78,11 @@ data class TeamEntity(
         name = name,
         description = description,
         foundedYear = foundedYear,
+        banner = banner,
         badge = badge,
         jersey = jersey,
         stadium = stadium,
+        imageStadium = imageStadium,
         website = website,
         twitter = twitter,
         youtube = youtube,

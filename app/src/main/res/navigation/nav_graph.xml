@@ -3,38 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/postsFragment"
+    app:startDestination="@id/teamsFragment"
     tools:ignore="UnusedNavigation">
 
     <fragment
-        android:id="@+id/postsFragment"
+        android:id="@+id/teamsFragment"
         android:name="com.rcflechas.teamsapp.presentation.ui.fragments.TeamsFragment"
-        android:label="fragment_movie"
+        android:label="fragment_teams"
         tools:layout="@layout/fragment_teams" >
 
-        <!--<action
-            android:id="@+id/action_movieFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
-
         <action
-            android:id="@+id/action_movieFragment_to_movieDetailFragmentDialog"
-            app:destination="@id/movieDetailFragmentDialog" />-->
+            android:id="@+id/action_teamsFragment_to_teamDetailFragmentDialog"
+            app:destination="@id/teamDetailFragmentDialog" />
     </fragment>
 
-    <!--<fragment
-        android:id="@+id/cartFragment"
-        android:name="com.rcflechas.shoppingcartapp.views.ui.fragments.CartFragment"
-        android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" >
-
-        <action
-            android:id="@+id/action_cartFragment_to_movieDetailFragmentDialog"
-            app:destination="@id/movieDetailFragmentDialog" />
-    </fragment>-->
-
-    <!--<dialog
-        android:id="@+id/movieDetailFragmentDialog"
-        android:name="com.rcflechas.shoppingcartapp.views.ui.fragments.MovieDetailDialogFragment"
-        android:label="fragment_movie_detail_dialog"
-        tools:layout="@layout/fragment_movie_detail_dialog"/>-->
+    <dialog
+        android:id="@+id/teamDetailFragmentDialog"
+        android:name="com.rcflechas.teamsapp.presentation.ui.fragments.TeamDetailDialogFragment"
+        android:label="fragment_team_detail_dialog"
+        tools:layout="@layout/fragment_team_detail_dialog"/>
 </navigation>
